@@ -76,6 +76,35 @@ Para correr el proyecto suponemos en nuestro equipo:
     spring-boot: run
     ```
 
+## Casos de uso probados
+
+### Spring Batch
+
+El primer caso de uso es crear una tarea a partir de un Spring Batch. El proyecto Batch se encuentra dentro de ``depot-batch`` y consiste en un Batch par gestión de un fichero con datos de un almacén.
+
+* Debemos registrar la aplicación.  
+    
+    En la consola(*):
+    
+   ```app register --name batch-job --type task --uri maven://com.arrobaautowired:depotbatch:jar:0.0.1-SNAPSHOT```
+   
+ * A continuación debemos crear la tarea
+ 
+    En la consola(*):
+    ``
+    task create depot-job --definition batch-job
+    ``
+ 
+ * Lanzamiento
+ 
+    En la consola(*):
+    
+    ``
+    task launch depot-job
+    ``
+ 
+(*) Todas las tareas pueden hacerse en la consola
+
 
 ## Bibliografía
 
@@ -83,3 +112,5 @@ Las fuentes consultadas para la realización de esta prueba de concpeto han sido
 * [https://www.baeldung.com/spring-cloud-data-flow-stream-processing](https://www.baeldung.com/spring-cloud-data-flow-stream-processing)
 * [https://www.baeldung.com/spring-cloud-data-flow-batch-processing](https://www.baeldung.com/spring-cloud-data-flow-batch-processing)
 * [https://cloud.spring.io/spring-cloud-dataflow/](https://cloud.spring.io/spring-cloud-dataflow/)
+* [https://www.baeldung.com/spring-cloud-task](https://www.baeldung.com/spring-cloud-task)
+* [https://www.baeldung.com/introduction-to-spring-batch](https://www.baeldung.com/introduction-to-spring-batch)

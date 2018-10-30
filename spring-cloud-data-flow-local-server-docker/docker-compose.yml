@@ -26,6 +26,8 @@ services:
       - spring.cloud.dataflow.applicationProperties.stream.spring.cloud.stream.kafka.binder.zkNodes=zookeeper:2181
     depends_on:
       - kafka
+    volumes:
+      - ~/.m2:/root/.m2
   app-import:
     image: alpine:3.7
     depends_on:

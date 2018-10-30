@@ -14,9 +14,7 @@
     </parent>
 
     <modules>
-        <module>spring-cloud-dataflow-server</module>
         <module>spring-cloud-dataflow-shell</module>
-       <!-- <module>spring-cloud-dataflow-ui</module>-->
     </modules>
 
     <properties>
@@ -41,9 +39,24 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.197</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dataflow-server-local-autoconfig</artifactId>
-                <version>1.7.0.RELEASE</version>
+                <artifactId>spring-cloud-task-dependencies</artifactId>
+                <version>1.2.2.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-task</artifactId>
+                <version>2.0.0.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>1.5.10</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

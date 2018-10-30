@@ -1,21 +1,25 @@
-# SPRING DATA CLOUD
-Spring Data Cloud es un modelo de programación para microservicios de datos en la nube. Con Spring Data Cloud (SDC), los desarrolladores pueden programar y orquestar _Data Pipelines_
+# POC SPRING DATA CLOUD
 
-Los origenes de los datos pueden ser en _Streaming_ o en _Batch_.
+Repositorio para pruebas del proyecto [https://cloud.spring.io/spring-cloud-dataflow/](https://cloud.spring.io/spring-cloud-dataflow/).
 
-En adelante nombraré Spring Data Cloud como SDC.
+## Fundamentos téoricos
+* Spring Cloud Data Flow es un modelo de programación para microservicios **de datos** en la nube. Con Spring Cloud Data Flow, los desarrolladores pueden programar y orquestar _Data Pipelines_
 
-## Arquitectura
+* Los origenes de los datos pueden ser en _Streaming_ o en _Batch_.
 
-La arquitectura de un sistema SDC se compone de dos conceptos clave:
+* En adelante nombraré Spring Cloud Data Flow como SCDF.
+
+### Arquitectura
+
+La arquitectura de un sistema SCDF se compone de dos conceptos clave:
 
 * Aplicaciones
 
     Habitualmente una _Pipeline_ de datos incluye consumo de eventos de sistemas externos, procesamiento de datos y persistencia.
     
-    Estas fases se denominan _Source_, _Processor_ y _Slink_
+    Estas aplicaciones son microservicios y se clasifican según su tipo: _Source_, _Processor_ y _Slink_  (Origen, Procesador y Destino). Son empaquetadas como aplicaciones independientes, que serán registradas en el servidor mediante la Shell.
     
-    Las aplicaciones pueden ser alojadas en un repositorio Maven, un archivo, cualquier recurso Spring o Docker. Cada aplicacion 
+    Las aplicaciones pueden ser alojadas en un repositorio Maven, un archivo, cualquier recurso Spring o Docker.
 
     Desde **Spring Cloud Data Flow Team**, publican muchos recursos para casos de uso comunes (JDBC, HDFS, HTTP, ROUTER)
 
@@ -38,16 +42,44 @@ Además necesitamos otros artefactos para utilizar/comprender SDC en su totalida
    
    UI para el servidor Data Flow.
    
-## Una POC de Spring Data Cloud
+## Este proyecto
 
-### Definición
+### Propósito
 
-Este proyecto es una prueba de concepto de Spring Data Cloud para procesamiento Batch. 
+Este proyecto es una prueba de concepto de Spring Data Cloud, probando varios de sus posibles usos.
 
-Esta compuesto de varios artefactos maven
+### Requisitos
+
+Para correr el proyecto suponemos en nuestro equipo:
+
+1. **Local server**: Servidor en el que registraremos el resto de microservicios (es el _runtime_ de la solución) 
+    
+    Es necesario tener corriendo una instancia de ``Spring Cloud Dataflow Local Server``
+    
+    Levantamos con [Docker Compose](https://docs.docker.com/compose/) la imagen.
+    
+    Para corerrlo desde este repositorio necesitamos ejecutar (sobre la raíz del proyecto)
+    ```
+    cd spring-cloud-data-flow-local-server-docker
+    DATAFLOW_VERSION=1.7.0.RELEASE docker-compose up
+    ```
+    
+    Una vez ejecutado, podemos acceder al servidor [http://localhost:9393/dashboard](http://localhost:9393/dashboard)
+
+2. **Spring Cloud Data Flow Shell**: Nos permite comunicarnos via _Shell_ con el servidor del punto 1; puede ser descargado o construido mediante la aplicación maven que se encuentra en ``spring-cloud-dataflow-shell``
+
+    Para correrla desde este repositorio necesitamos ejecutar (sobre la raíz del proyecto)
+    
+    ```
+    cd spring-cloud-dataflow-shell
+    mvn clean install
+    spring-boot: run
+    ```
+
 
 ## Bibliografía
 
-Las funetes consultadas para la realización de esta prueba de concpeto han sido:
+Las fuentes consultadas para la realización de esta prueba de concpeto han sido:
 * [https://www.baeldung.com/spring-cloud-data-flow-stream-processing](https://www.baeldung.com/spring-cloud-data-flow-stream-processing)
 * [https://www.baeldung.com/spring-cloud-data-flow-batch-processing](https://www.baeldung.com/spring-cloud-data-flow-batch-processing)
+* [https://cloud.spring.io/spring-cloud-dataflow/](https://cloud.spring.io/spring-cloud-dataflow/)

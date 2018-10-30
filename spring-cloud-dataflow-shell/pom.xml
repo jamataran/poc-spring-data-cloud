@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.arrobaautowired</groupId>
-	<artifactId>spring-cloud-dataflow-server</artifactId>
+	<artifactId>spring-cloud-dataflow-shell</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-cloud-dataflow-server</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Spring Cloud Data Flow Shell</name>
+	<description>Shell para interactuar con un servidor Spring Cloud Dataflow Server</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -36,12 +36,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- DataFlow Shell-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-dataflow-server-local</artifactId>
+			<artifactId>spring-cloud-dataflow-shell</artifactId>
 			<version>1.7.0.RELEASE</version>
 		</dependency>
-
 
 	</dependencies>
 
